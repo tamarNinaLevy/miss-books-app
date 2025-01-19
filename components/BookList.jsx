@@ -10,7 +10,6 @@ export function BookList({ books, setSelectedBookId }) {
 
     return (
         <section className="books">
-            <h1>Book List</h1>
             {
                 books.map((book) => {
                     return <BookPreview

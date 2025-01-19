@@ -42,7 +42,7 @@ export function BookIndex() {
 
     return (
         <section>
-            <h1>Book Index</h1>
+            <h1 className="index-header">Book Index</h1>
             {
                 selectedBookId && book ?
                     <BookDetails

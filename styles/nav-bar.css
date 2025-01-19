@@ -3,7 +3,7 @@
     padding: 5px;
     padding-right:30px;
     padding-left: 30px;
-    background-color: rgb(240, 84, 41);
+    background-color:  rgb(233, 76, 14);
     color: black;
     display: flex;
     flex-direction: row;
@@ -21,7 +21,7 @@
 }
 
 .link {
-    background-color:  rgb(240, 84, 41);
+    background-color:   rgb(233, 76, 14);
     border: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
