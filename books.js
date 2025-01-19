@@ -1,6 +1,4 @@
-
-
-const books = [
+export const default_books = [
   {
     "id": "OXeMG8wNskc",
     "title": "metus hendrerit",

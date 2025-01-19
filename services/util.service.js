@@ -1,3 +1,10 @@
+export const util = {
+    saveToStorage,
+    loadFromStorage,
+    makeId,
+    makeLorem,
+    getRandomIntInclusive,
+}
 
 export function makeId(length = 6) {
     var txt = ''
