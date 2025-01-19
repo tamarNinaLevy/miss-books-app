@@ -1,5 +1,7 @@
-export function HomePage(){
+export function HomePage() {
     return (
-        <h1>Home page</h1>
+        <div className="home">
+            <img className='logo' src='../images\logo-2.jpg'/>
+        </div>
     )
 }

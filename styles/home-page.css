@@ -1,0 +1,16 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 40%;
+    margin-top: 5vh;
+    background-color: lightgray;
+    background: none;
+    background-color: transparent;
+    background: none;
+    
+}
