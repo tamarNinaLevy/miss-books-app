@@ -7,8 +7,8 @@ export function BookDetails({ book, goBack }) {
                 <div>
                     <h4>Authors:</h4>
                     {book.authors.map((author) => {
-                        return <React.Fragment>
-                            <span key={author}>{author}</span>
+                        return <React.Fragment key={author}>
+                            <span>{author}</span>
                             <br />
                         </React.Fragment>
                     })}
@@ -16,8 +16,8 @@ export function BookDetails({ book, goBack }) {
                 <div>
                     <h4>Categories:</h4>
                     {book.categories.map((category) => {
-                        return <React.Fragment>
-                            <span key={category}>{category}</span>
+                        return <React.Fragment key={category}>
+                            <span>{category}</span>
                             <br />
                         </React.Fragment>
                     })}
@@ -29,6 +29,6 @@ export function BookDetails({ book, goBack }) {
                 <input type="button" value="go back" onClick={goBack} />
             </div>
             <img className="book-img" src={book.thumbnail} />
-        </div>
+        </div >
     )
 }

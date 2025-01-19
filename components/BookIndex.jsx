@@ -1,26 +1,28 @@
 const { useState, useEffect } = React
 
 import { BookList } from "./BookList.jsx";
+import { BookDetails } from "./BookDetails.jsx";
+import { Filter } from "./Filter.jsx";
 
 import { bookService } from "../services/book.service.js";
-import { BookDetails } from "./BookDetails.jsx";
 
 export function BookIndex() {
 
     const [books, setBooks] = useState(null)
     const [selectedBookId, setSelectedBookId] = useState(null)
     const [book, setBook] = useState(null)
+    const [filterBy, setFilterBy] = useState({ all: 'All', order: 1 })
 
     useEffect(() => {
-        loadBooks()
-    }, [])
+        loadBooks(filterBy)
+    }, [filterBy])
 
     useEffect(() => {
         selectedBookId && showSelected()
     }, [selectedBookId])
 
-    function loadBooks() {
-        bookService.query()
+    function loadBooks(filterBy) {
+        bookService.query(filterBy)
             .then(setBooks)
             .catch(err => {
                 console.log('ERROR: ', err)
@@ -49,7 +51,10 @@ export function BookIndex() {
                         book={book}
                         goBack={goBack}
                     /> :
-                    <BookList books={books} setSelectedBookId={setSelectedBookId} />
+                    <React.Fragment>
+                        <Filter setFilterBy={setFilterBy} filterBy={filterBy} />
+                        <BookList books={books} setSelectedBookId={setSelectedBookId} />
+                    </React.Fragment>
             }
         </section>
     )
