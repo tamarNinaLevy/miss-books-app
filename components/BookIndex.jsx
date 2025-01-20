@@ -11,7 +11,7 @@ export function BookIndex() {
     const [books, setBooks] = useState(null)
     const [selectedBookId, setSelectedBookId] = useState(null)
     const [book, setBook] = useState(null)
-    const [filterBy, setFilterBy] = useState({ all: 'All', order: 1 })
+    const [filterBy, setFilterBy] = useState({ title: '', price: '' })
 
     useEffect(() => {
         loadBooks(filterBy)
