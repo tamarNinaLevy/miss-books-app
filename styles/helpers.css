@@ -1,3 +1,7 @@
 .bold-font {
     font-weight: 600;
 }
+
+.font {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

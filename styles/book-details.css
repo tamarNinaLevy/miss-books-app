@@ -12,7 +12,7 @@
 
 .details {
     align-items: flex-start;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-left: 20px;
 }
 
@@ -35,4 +35,12 @@ h4 {
 
 .btn {
     margin: 15px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
 }
