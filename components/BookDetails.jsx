@@ -1,3 +1,4 @@
+import { LongTxt } from './LongTxt.jsx'
 import { SaleSign } from './SaleSign.jsx'
 
 export function BookDetails({ book, goBack }) {
@@ -52,7 +53,7 @@ export function BookDetails({ book, goBack }) {
                     <span className={book.listPrice.amount > 150 ? 'red' : book.listPrice.amount < 20 ? 'green' : ''}>Price: {book.listPrice.amount} {book.listPrice.currencyCode}</span> <br />
                 </div>
 
-                <p>{book.description}</p>
+                <LongTxt txt={book.description} />
 
                 <input className="clear-filter btn" type="button" value="go back" onClick={goBack} />
 
