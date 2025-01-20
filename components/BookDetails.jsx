@@ -1,32 +1,43 @@
 export function BookDetails({ book, goBack }) {
+
     return (
-        <div className="book-details">
-            <div className="details">
-                <h1>{book.title}</h1>
-                <h3>{book.subtitle}</h3>
-                <div>
+        <div className="details-container">
+            <div className="details flex column justify-center">
+
+                <div className="headers flex column align-center justify-center">
+                    <h1>{book.title}</h1>
+                    <h3>{book.subtitle}</h3>
+                </div>
+
+                <div className="list">
                     <h4>Authors:</h4>
-                    {book.authors.map((author) => {
-                        return <React.Fragment key={author}>
-                            <span>{author}</span>
-                            <br />
-                        </React.Fragment>
-                    })}
+                    <ul>
+                        {book.authors.map((author) => {
+                            return <li key={author}>{author}</li>
+                        })}
+                    </ul>
                 </div>
-                <div>
+
+                <div className="list">
                     <h4>Categories:</h4>
-                    {book.categories.map((category) => {
-                        return <React.Fragment key={category}>
-                            <span>{category}</span>
-                            <br />
-                        </React.Fragment>
-                    })}
+                    <ul>
+                        {book.categories.map((category) => {
+                            return <li key={category}>{category}</li>
+                        })}
+                    </ul>
                 </div>
-                <span>Published: {book.publishedDate}</span>
+
+                <div className="other">
+                    <span className="bold-font">More details:</span> <br />
+                    <span>Published: {book.publishedDate}</span> <br />
+                    <span>Pages: {book.pageCount}</span> <br />
+                    <span>Price: {book.listPrice.amount} {book.listPrice.currencyCode}</span> <br />
+                </div>
+
                 <p>{book.description}</p>
-                <span>Pages: {book.pageCount}</span>
-                <span>Price: {book.listPrice.amount} {book.listPrice.currencyCode}</span>
-                <input type="button" value="go back" onClick={goBack} />
+
+                <input className="clear-filter btn" type="button" value="go back" onClick={goBack} />
+
             </div>
             <img className="book-img" src={book.thumbnail} />
         </div >
