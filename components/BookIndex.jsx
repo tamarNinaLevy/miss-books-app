@@ -10,7 +10,7 @@ export function BookIndex() {
 
     const [book, setBook] = useState(null)
     const [books, setBooks] = useState(null)
-    const [filterBy, setFilterBy] = useState({ title: '', price: '' })
+    const [filterBy, setFilterBy] = useState({ title: '', price: '', author: '', publishedDate: '' })
     const [selectedBookId, setSelectedBookId] = useState({ bookId: '', delete: false, details: false })
 
     useEffect(() => {

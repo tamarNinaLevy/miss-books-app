@@ -25,6 +25,13 @@ function query(filterBy = {}) {
                 const price = parseInt(filterBy.price)
                 return books.filter((book) => book.listPrice.amount <= price)
             }
+            if (filterBy.author !== '') {
+                return books.filter((book) => book.authors.includes(filterBy.author))
+            }
+            if (filterBy.publishedDate !== '') {
+                const year = parseInt(filterBy.publishedDate)
+                return books.filter((book) => book.publishedDate === year)
+            }
             return books
         })
 }
