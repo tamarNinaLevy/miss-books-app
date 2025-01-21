@@ -1,24 +1,28 @@
 const { useState, useEffect } = React
 
-import { BookList } from "./BookList.jsx";
-import { BookDetails } from "./BookDetails.jsx";
-import { Filter } from "./Filter.jsx";
+import { Filter } from "./Filter.jsx"
+import { BookList } from "./BookList.jsx"
+import { BookDetails } from "./BookDetails.jsx"
 
-import { bookService } from "../services/book.service.js";
+import { bookService } from "../services/book.service.js"
 
 export function BookIndex() {
 
-    const [books, setBooks] = useState(null)
-    const [selectedBookId, setSelectedBookId] = useState(null)
     const [book, setBook] = useState(null)
+    const [books, setBooks] = useState(null)
     const [filterBy, setFilterBy] = useState({ title: '', price: '' })
+    const [selectedBookId, setSelectedBookId] = useState({ bookId: '', delete: false, details: false })
 
     useEffect(() => {
         loadBooks(filterBy)
     }, [filterBy])
 
     useEffect(() => {
-        selectedBookId && showSelected()
+        if (selectedBookId.bookId !== '' && selectedBookId.details) {
+            showSelected()
+        } else if (selectedBookId.bookId !== '' && selectedBookId.delete) {
+            removeBook()
+        }
     }, [selectedBookId])
 
     function loadBooks(filterBy) {
@@ -29,8 +33,19 @@ export function BookIndex() {
             })
     }
 
+    function removeBook() {
+        bookService.removeBook(selectedBookId.bookId)
+            .then(() => {
+                setBooks((prev) => prev.filter((book) => {
+                    return book.id !== bookId
+                }))
+                setSelectedBookId({ bookId: '', delete: false, details: false })
+            })
+            .catch(err => console.log('ERR: ', err))
+    }
+
     function showSelected() {
-        bookService.get(selectedBookId)
+        bookService.get(selectedBookId.bookId)
             .then(setBook)
             .catch(err => {
                 console.log('ERROR: ', err)
@@ -38,7 +53,7 @@ export function BookIndex() {
     }
 
     function goBack() {
-        setSelectedBookId(null)
+        setSelectedBookId({ bookId: '', delete: false, details: false })
         setBook(null)
     }
 
@@ -53,7 +68,12 @@ export function BookIndex() {
                     /> :
                     <React.Fragment>
                         <Filter setFilterBy={setFilterBy} filterBy={filterBy} />
-                        <BookList books={books} setSelectedBookId={setSelectedBookId} />
+                        <BookList
+                            books={books}
+                            setSelectedBookId={setSelectedBookId}
+                            setBooks={setBooks}
+                            removeBook={removeBook}
+                        />
                     </React.Fragment>
             }
         </section>
