@@ -33,7 +33,6 @@ export function Filter({ setFilterBy, filterBy }) {
         <input type='text' className="filter-input" value={price} name='price' placeholder='Enter price...' onInput={onInputChange} />
         <input type='text' className="filter-input" value={author} name='author' placeholder='Enter author name...' onInput={onInputChange} />
         <input type='text' className="filter-input" value={publishedDate} name='publishedDate' placeholder='Enter published date...' onInput={onInputChange} />
-
         <input type='button' className="clear-filter" value='clear filters' onClick={() => clear()} />
     </div>
 }

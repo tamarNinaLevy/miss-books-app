@@ -1,9 +1,12 @@
+const { useState } = React
+
+const Router = ReactRouterDOM.HashRouter
+const { Routes, Route, Navigate } = ReactRouterDOM
+
 import { HomePage } from "./components/HomePage.jsx";
 import { About } from "./components/About.jsx";
 import { BookIndex } from "./components/BookIndex.jsx";
 import { NavBar } from "./components/NavBar.jsx";
-
-const { useState } = React;
 
 export function App() {
 
@@ -14,11 +17,13 @@ export function App() {
     }
 
     return (
-        <section className="app">
-            <NavBar navigateTo={navigateTo} />
-            {page === 'home' && <HomePage />}
-            {page === 'book' && <BookIndex />}
-            {page === 'about' && <About />}
-        </section>
+        <Router>
+            <section className="app">
+                <NavBar navigateTo={navigateTo} />
+                {page === 'home' && <HomePage />}
+                {page === 'book' && <BookIndex />}
+                {page === 'about' && <About />}
+            </section>
+        </Router>
     )
 } 

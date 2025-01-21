@@ -4,7 +4,8 @@ import { saveToStorage } from './util.service.js'
 export const bookService = {
     query,
     get,
-    removeBook
+    removeBook,
+    getFilterFromSearchParams
 }
 
 const BOOK_DB_KEYS = {
@@ -42,6 +43,19 @@ function get(bookId) {
 
 function removeBook(bookId) {
     return asyncStorageService.remove(BOOK_DB_KEYS.books, bookId)
+}
+
+function getFilterFromSearchParams(searchParams) {
+    const title = searchParams.get('title') || ''
+    const price = searchParams.get('price') || ''
+    const author = searchParams.get('author') || ''
+    const publishedDate = searchParams.get('published') || ''
+    return {
+        title,
+        price,
+        author,
+        publishedDate
+    }
 }
 
 function _createBooks() {
